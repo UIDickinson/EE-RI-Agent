@@ -6,6 +6,14 @@ Specializing in Power Management ICs, EMC/EMI solutions, and Embedded Systems.
 
 ## Quick Start
 
+### Manual Setup
+```bash
+# setup python
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
 ```bash
 # Clone and setup
 git clone https://github.com/UIDickinson/EE-RI-Agent.git
