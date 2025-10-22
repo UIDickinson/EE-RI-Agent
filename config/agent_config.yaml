@@ -1,0 +1,97 @@
+agent:
+  name: "EE Research & Innovation Scout"
+  version: "1.0.0"
+  model: "gpt-4-turbo-preview"
+  temperature: 0.7
+  max_tokens: 4000
+  
+  # Query handling
+  query_handling:
+    max_query_length: 500
+    default_depth: "deep"  # "quick" or "deep"
+    timeout_seconds: 300
+    retry_attempts: 3
+  
+  # Domain focus
+  domains:
+    primary:
+      - embedded_systems
+      - power_management
+      - emc_emi
+    secondary:
+      - analog
+      - rf_wireless
+      - signal_integrity
+  
+  # Regional settings
+  regions:
+    target:
+      - EU
+      - Asia
+    exclude:
+      - US  # Optional exclusion
+  
+  # Research sources
+  sources:
+    academic:
+      enabled: true
+      max_results: 20
+      sources:
+        - IEEE Xplore
+        - arXiv
+        - Google Scholar
+    
+    patents:
+      enabled: true
+      max_results: 20
+      offices:
+        - EPO
+        - CNIPA
+        - JPO
+    
+    components:
+      enabled: true
+      max_results: 30
+      manufacturers:
+        - Texas Instruments
+        - Infineon
+        - STMicroelectronics
+        - Renesas
+        - Rohm
+    
+    supply_chain:
+      enabled: true
+      distributors:
+        - Digi-Key
+        - Mouser
+        - LCSC
+        - Farnell
+  
+  # TRL Classification
+  trl:
+    enabled: true
+    minimum_trl: 1
+    prefer_high_trl: true  # Prioritize production-ready solutions
+  
+  # Output configuration
+  output:
+    format: "comprehensive"  # "quick" or "comprehensive"
+    include_references: true
+    include_graphs: true
+    export_formats:
+      - json
+      - markdown
+      - pdf
+
+# Performance settings
+performance:
+  parallel_tasks: 4
+  cache_results: true
+  cache_ttl_hours: 24
+
+# Logging
+logging:
+  level: INFO
+  log_queries: true
+  log_results: true
+  log_file: "logs/ee_scout.log"

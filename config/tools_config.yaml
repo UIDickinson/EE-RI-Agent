@@ -1,0 +1,60 @@
+knowledge_graph:
+  enabled: true
+  neo4j:
+    uri: "bolt://localhost:7687"
+    user: "neo4j"
+    password: "${NEO4J_PASSWORD}"
+  options:
+    batch_size: 100
+    auto_index: true
+    relationship_types:
+      - CITES
+      - IMPLEMENTS
+      - DISCUSSES
+      - ALTERNATIVE_TO
+      - FOUND_PAPER
+      - FOUND_PATENT
+      - FOUND_COMPONENT
+
+trl_classifier:
+  enabled: true
+  classification_mode: "multi_source"  # "multi_source" or "single_source"
+  confidence_threshold: 0.7
+  evidence_weights:
+    supply_chain: 0.4
+    datasheet: 0.3
+    patents: 0.2
+    papers: 0.1
+
+datasheet_parser:
+  enabled: true
+  pdf_processing:
+    max_pages: 50
+    timeout_seconds: 30
+    extract_tables: true
+    extract_images: false
+  specification_extraction:
+    auto_detect_units: true
+    normalize_values: true
+    extract_graphs: false
+
+regional_filter:
+  enabled: true
+  strict_mode: false  # If true, exclude components not matching regions
+  compliance_check: true
+  regional_standards:
+    EU:
+      - CE
+      - RoHS
+      - REACH
+    Asia:
+      - CCC
+      - PSE
+      - KC
+
+supply_chain_monitor:
+  enabled: true
+  check_interval_hours: 24
+  stock_threshold_warning: 100
+  lifecycle_alerts: true
+  price_tracking: true
