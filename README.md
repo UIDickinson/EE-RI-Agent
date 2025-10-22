@@ -8,13 +8,22 @@ Specializing in Power Management ICs, EMC/EMI solutions, and Embedded Systems.
 
 ```bash
 # Clone and setup
-git clone 
-cd ee-research-scout
+git clone https://github.com/UIDickinson/EE-RI-Agent.git
+cd EE-RI-Agent
 chmod +x setup.sh
 ./setup.sh
 
+# Clone ROMA as submodule
+git init
+git submodule add https://github.com/sentient-agi/ROMA.git roma
+
 # Start services
 cd roma && docker-compose up -d
+
+# Or use
+cd roma && ./setup.sh --docker
+
+#frontend
 cd ../frontend && npm install && npm run dev
 ```
 
